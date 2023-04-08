@@ -1,6 +1,9 @@
 <div align="center">
 <img src="./docs/images/icon.svg" alt="icon"/>
 
+<h1 align="center">MarginNote 下 AIAssistant 定制版, 因为 API Key 会上传到服务器, 所以推荐自己部署. 点击下面的`Deploy with Vercel` 按钮, 就可以部署一个属于自己的服务器.</h1>
+为了能在 AIAssistant 中使用, 仅做了很小的修改, 目的方便将 MarginNote 中的设置和选择文本传进来.
+
 <h1 align="center">ChatGPT Next Web</h1>
 
 One-Click to deploy well-designed ChatGPT web UI on Vercel.
@@ -9,7 +12,7 @@ One-Click to deploy well-designed ChatGPT web UI on Vercel.
 
 [演示 Demo](https://chat-gpt-next-web.vercel.app/) / [反馈 Issues](https://github.com/Yidadaa/ChatGPT-Next-Web/issues) / [Join Discord](https://discord.gg/zrhvHCr79N) / [QQ 群](https://user-images.githubusercontent.com/16968934/228190818-7dd00845-e9b9-4363-97e5-44c507ac76da.jpeg) / [打赏开发者](https://user-images.githubusercontent.com/16968934/227772541-5bcd52d8-61b7-488c-a203-0330d8006e2b.jpg) / [Buy Me a Coffee](https://www.buymeacoffee.com/yidadaa)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYidadaa%2FChatGPT-Next-Web&env=OPENAI_API_KEY&env=CODE&project-name=chatgpt-next-web&repository-name=ChatGPT-Next-Web)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fzzhirong%2FChatGPT-Next-Web-AIAssistant&project-name=chatgpt-next-web-aiassistant&repository-name=ChatGPT-Next-Web-AIAssistant)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Yidadaa/ChatGPT-Next-Web)
 

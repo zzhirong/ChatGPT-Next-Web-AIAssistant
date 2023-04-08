@@ -19,6 +19,7 @@ import {
   BOT_HELLO,
   ROLES,
   createMessage,
+  useAccessStore,
 } from "../store";
 
 import {
@@ -531,6 +532,8 @@ export function Chat(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const accessStore = useAccessStore();
+
   return (
     <div className={styles.chat} key={session.id}>
       <div className={styles["window-header"]}>
@@ -697,6 +700,30 @@ export function Chat(props: {
             }}
             autoFocus={!props?.sideBarShowing}
             rows={inputRows}
+          />
+          <input
+            type="hidden"
+            value=""
+            id="input-from-external" // for marginnote
+            onClick={(e: React.MouseEvent<HTMLInputElement>) => {
+              const message = (e.target as HTMLInputElement).value;
+              // let message = (document.getElementById('chat-input-message') as HTMLTextAreaElement).value
+              setIsLoading(true);
+              chatStore.onUserInput(message).then(() => setIsLoading(false));
+              setUserInput("");
+              setPromptHints([]);
+              if (!isMobileScreen()) inputRef.current?.focus();
+              setAutoScroll(true);
+            }}
+          />
+          <input
+            type="hidden"
+            value="placeholder"
+            id="input-openai-api-key"
+            onClick={(e: React.MouseEvent<HTMLInputElement>) => {
+              const token = (e.target as HTMLInputElement).value;
+              accessStore.updateToken(token);
+            }}
           />
           <IconButton
             icon={<SendWhiteIcon />}
