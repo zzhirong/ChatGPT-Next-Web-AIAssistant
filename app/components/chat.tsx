@@ -540,8 +540,6 @@ export function Chat(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const accessStore = useAccessStore();
-
   return (
     <div className={styles.chat} key={session.id}>
       <div className={styles["window-header"]}>
