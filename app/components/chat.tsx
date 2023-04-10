@@ -540,23 +540,75 @@ export function Chat(props: {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTopic, setNewTopic] = useState(session.topic);
+
+  const handleTitleClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewTopic(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (newTopic !== session.topic) {
+      if (newTopic && newTopic !== session.topic) {
+        chatStore.updateCurrentSession(
+          (session) => (session.topic = newTopic!),
+        );
+      }
+    }
+    setIsEditing(false);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setNewTopic(session.topic);
+  };
+
+  const renderTitle = () => {
+    if (isEditing) {
+      return (
+        <div className={styles["window-header-main-title"]}>
+          <input
+            type="text"
+            className={styles["input-title"]}
+            value={newTopic}
+            onChange={handleInputChange}
+            onBlur={handleSubmit}
+            autoFocus
+          />
+          <div className={styles["edit-title-buttons"]}>
+            <button className={styles["submit-button"]} onClick={handleSubmit}>
+              Save
+            </button>
+            <button
+              className={styles["cancel-button"]}
+              onClick={handleCancelEdit}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div
+          className={`${styles["window-header-main-title"]} ${styles["chat-body-title"]}`}
+          onClickCapture={handleTitleClick}
+        >
+          {session.topic}
+        </div>
+      );
+    }
+  };
+
   return (
     <div className={styles.chat} key={session.id}>
       <div className={styles["window-header"]}>
         <div className={styles["window-header-title"]}>
-          <div
-            className={`${styles["window-header-main-title"]} ${styles["chat-body-title"]}`}
-            onClickCapture={() => {
-              const newTopic = prompt(Locale.Chat.Rename, session.topic);
-              if (newTopic && newTopic !== session.topic) {
-                chatStore.updateCurrentSession(
-                  (session) => (session.topic = newTopic!),
-                );
-              }
-            }}
-          >
-            {session.topic}
-          </div>
+          {renderTitle()}
           <div className={styles["window-header-sub-title"]}>
             {Locale.Chat.SubTitle(session.messages.length)}
           </div>

@@ -332,7 +332,8 @@ export const useChatStore = create<ChatStore>()(
         const deletedSession = get().currentSession();
         const index = i ?? get().currentSessionIndex;
         const isLastSession = get().sessions.length === 1;
-        if (!isMobileScreen() || confirm(Locale.Home.DeleteChat)) {
+        // `confirm()` is not work on marginnote aiassistant
+        if (!isMobileScreen() || true) {
           get().removeSession(index);
 
           showToast(
