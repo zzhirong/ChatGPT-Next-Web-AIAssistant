@@ -161,7 +161,7 @@ function PromptToast(props: {
                 bordered
                 text={Locale.Memory.Reset}
                 onClick={() =>
-                  confirm(Locale.Memory.ResetConfirm) &&
+                  // confirm(Locale.Memory.ResetConfirm) &&
                   chatStore.resetSession()
                 }
               />,
